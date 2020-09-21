@@ -19,7 +19,10 @@
       <td>
         <p align = "center">
             <% flight.passengers.each do |passenger| %>
+            <div id="passenger-<%=passenger.id %>">
             <%= passenger.name %><br>
+            <%= link_to "Remove Passenger", "/passengers/#{passenger.id}", method: :delete %>
+            </div>
             <% end %>
         </p>
       </td>
