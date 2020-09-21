@@ -1,16 +1,10 @@
 <table>
   <tr>
-    <th>Airline</th>
     <th>Flight Number</th>
     <th>Passengers</th>
   </tr>
   <% @flights.each do |flight| %>
     <tr id= "flight-<%=flight.id%>">
-      <td>
-        <p align = "center">
-            <%= flight.airline.name %>
-        </p>
-      </td>
       <td>
         <p align = "center">
             <%= flight.name %>

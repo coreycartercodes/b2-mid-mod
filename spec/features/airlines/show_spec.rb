@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "When I visit the flights index page ('/flights')" do
+RSpec.describe "When I visit an airlines show page ('/airlines/:id')" do
   before(:each) do
     @frontier = Airline.create(name: "Frontier Airlines")
     @southwest = Airline.create(name: "Southwest Airlines")
@@ -16,32 +16,18 @@ RSpec.describe "When I visit the flights index page ('/flights')" do
     @kate = @flight_3.passengers.create(name: "Katie K", age: "28")
   end
 
-  describe "I see a list of all flight numbers" do
-    it 'And under each flight number I see the names of all that flights passengers' do
-    
-      visit '/flights'
+    it 'I see a unique list of passengers that have flights from that airline' do
 
-      within "#flight-#{@flight_1.id}" do
-        expect(page).to have_content("#{@flight_1.name}")
+        visit "/airlines/#{@frontier.id}"
+
         expect(page).to have_content("#{@corey.name}")
         expect(page).to have_content("#{@anhnhi.name}")
-      end
-
-      within "#flight-#{@flight_2.id}" do
-        expect(page).to have_content("#{@flight_2.name}")
-        expect(page).to have_content("#{@bob.name}")
-      end
-
-      within "#flight-#{@flight_3.id}" do
-        expect(page).to have_content("#{@flight_3.name}")
-        expect(page).to have_content("#{@kate.name}")
-      end
-
-      within "#flight-#{@flight_4.id}" do
-        expect(page).to have_content("#{@flight_4.name}")
         expect(page).to have_content("#{@zazu.name}")
-      end
+
+        expect(page).to_not have_content("#{@bob.name}")
+        expect(page).to_not have_content("#{@kate.name}")
 
     end
-  end
+
 end
+    
