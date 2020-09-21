@@ -24,7 +24,7 @@ RSpec.describe "When I visit an airlines show page ('/airlines/:id')" do
         expect(page).to have_content("#{@corey.name}")
         expect(page).to have_content("#{@anhnhi.name}")
         expect(page).to have_content("#{@zazu.name}")
-      save_and_open_page
+        
         expect(page).to_not have_content("#{@bob.name}")
         expect(page).to_not have_content("#{@kate.name}")
     end
