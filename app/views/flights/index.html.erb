@@ -1,31 +1,31 @@
 <table>
-  <tr>
-    <th>Airline</th>
-    <th>Flight Number</th>
-    <th>Passengers</th>
-  </tr>
-  <% @flights.each do |flight| %>
+    <tr>
+      <th>Airline</th>
+      <th>Flight Number</th>
+      <th>Passengers</th>
+    </tr>
+    <% @flights.each do |flight| %>
     <tr id= "flight-<%=flight.id%>">
       <td>
         <p align = "center">
-            <%= flight.airline.name %>
+          <%= flight.airline.name %>
         </p>
       </td>
       <td>
         <p align = "center">
-            <%= flight.name %>
+          <%= flight.name %>
         </p>
       </td>
       <td>
         <p align = "center">
-            <% flight.passengers.each do |passenger| %>
-            <div id="passenger-<%=passenger.id %>">
-            <%= passenger.name %><br>
-            <%= link_to "Remove Passenger", "/passengers/#{passenger.id}", method: :delete %>
+          <% flight.flight_passengers.each do |fl_passenger| %>
+            <div id="passenger-<%=fl_passenger.passenger_id %>">
+            <%= fl_passenger.passenger.name %><br>
+            <%= link_to "Remove Passenger", "/passengers/#{fl_passenger.id}", method: :delete %>
             </div>
-            <% end %>
+          <% end %>
         </p>
       </td>
     </tr>
-      <% end %>
-      </table>
+    <% end %>
+</table>

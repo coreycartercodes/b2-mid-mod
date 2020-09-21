@@ -41,7 +41,6 @@ RSpec.describe "When I visit the flights index page ('/flights')" do
         expect(page).to have_content("#{@flight_4.name}")
         expect(page).to have_content("#{@zazu.name}")
       end
-
     end
   end
 
@@ -61,7 +60,6 @@ RSpec.describe "When I visit the flights index page ('/flights')" do
       within "#passenger-#{@zazu.id}" do
         expect(page).to have_link("Remove Passenger")
       end
-
     end
 
     it 'when the link is clicked, the passenger is removed and I stay on the flight index page' do
@@ -73,7 +71,6 @@ RSpec.describe "When I visit the flights index page ('/flights')" do
 
       expect(current_path).to eq("/flights")
       expect(page).to_not have_content("#{@corey.name}")
-
     end
   end
 end
