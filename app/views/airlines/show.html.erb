@@ -1,22 +1,5 @@
-<table>
-    <tr>
-        <th>Flight Number</th>
-        <th>Passengers</th>
-    </tr>
-    <% @flights.each do |flight| %>
-    <tr id= "flight-<%=flight.id%>">
-        <td>
-            <p align = "center">
-            <%= flight.name %>
-            </p>
-        </td>
-        <td>
-            <p align = "center">
-            <% flight.passengers.each do |passenger| %>
-                <%= passenger.name %><br>
-            <% end %>
-            </p>
-        </td>
-    </tr>
-    <% end %>
-</table>
+<h1> <%= @airline.name %> Passengers </h1>
+
+<% @airline.unique_passengers.each do |passenger| %>
+<p><%= passenger.name %>
+<% end %>

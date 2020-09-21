@@ -5,10 +5,10 @@ RSpec.describe "When I visit the flights index page ('/flights')" do
     @frontier = Airline.create(name: "Frontier Airlines")
     @southwest = Airline.create(name: "Southwest Airlines")
     @spirit = Airline.create(name: "Spirit Airlines")
-    @flight_1 = @frontier.flights.create(name: 'XYZ123')
-    @flight_2 = @southwest.flights.create(name: 'ABC789')
-    @flight_3 = @spirit.flights.create(name: 'GHJ543')
-    @flight_4 = @frontier.flights.create(name: 'BNM432')
+    @flight_1 = @frontier.flights.create(number: 123)
+    @flight_2 = @southwest.flights.create(number: 789)
+    @flight_3 = @spirit.flights.create(number: 543)
+    @flight_4 = @frontier.flights.create(number: 432)
     @corey = @flight_1.passengers.create(name: "Corey C", age: "34")
     @anhnhi = @flight_1.passengers.create(name: "Anhnhi T", age: "32")
     @zazu = @flight_4.passengers.create(name: "Zazu C", age: "7")
@@ -22,23 +22,23 @@ RSpec.describe "When I visit the flights index page ('/flights')" do
       visit '/flights'
 
       within "#flight-#{@flight_1.id}" do
-        expect(page).to have_content("#{@flight_1.name}")
+        expect(page).to have_content("#{@flight_1.number}")
         expect(page).to have_content("#{@corey.name}")
         expect(page).to have_content("#{@anhnhi.name}")
       end
 
       within "#flight-#{@flight_2.id}" do
-        expect(page).to have_content("#{@flight_2.name}")
+        expect(page).to have_content("#{@flight_2.number}")
         expect(page).to have_content("#{@bob.name}")
       end
 
       within "#flight-#{@flight_3.id}" do
-        expect(page).to have_content("#{@flight_3.name}")
+        expect(page).to have_content("#{@flight_3.number}")
         expect(page).to have_content("#{@kate.name}")
       end
 
       within "#flight-#{@flight_4.id}" do
-        expect(page).to have_content("#{@flight_4.name}")
+        expect(page).to have_content("#{@flight_4.number}")
         expect(page).to have_content("#{@zazu.name}")
       end
     end
